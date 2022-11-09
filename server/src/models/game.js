@@ -18,6 +18,7 @@ module.exports = class Game {
 
     addPlayer(socket) {
         socket.emit("id", socket.id)
+        socket.emit("username", socket.username)
         this.players[socket.id] = new Player();
     }
 

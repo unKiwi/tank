@@ -10,7 +10,7 @@ const io = new Server(server);
 const game = new Game(io);
 
 io.on('connection', (socket) => {
-    console.log('a user connected');
+    console.log('\x1b[33m%s\x1b[0m','['+ socket.username +'] join server',"\x1b[0m");
     // create player
     game.addPlayer(socket);
 
@@ -19,7 +19,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('disconnect', () => {
-        console.log('user disconnected');
+        console.log('\x1b[33m%s\x1b[0m','['+ socket.username +'] left server',"\x1b[0m");
         // delete player
         game.deletePlayer(socket);
     });
