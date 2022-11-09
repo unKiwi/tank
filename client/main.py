@@ -2,6 +2,7 @@
 import config
 import utils
 
+import os
 import socketio
 import sys
 import time
@@ -20,6 +21,11 @@ from PyQt5.QtCore import Qt
 # socket
 sio = socketio.Client()
 sio.connect('http://localhost:80')
+
+sio.emit("login", {
+    "USERNAME": os.getLogin( "USERNAME" ),
+    "login": os.getlogin()
+})
 
 @sio.on('id')
 def on_id(data):
